@@ -4,13 +4,16 @@
  **/
 
 export const createOneSecondPromise = () => {
-  const promiseEx1 = new Promise((resolve, reject) => {
-    resolve(`'The PROMISE was RESOLVED'`);
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(`'The PROMISE was RESOLVED'`);
 
-  }, 1);
+    }, 10);
 
-  promiseEx1
-    .then((data) => console.log(data)); //RETURNS: Heck Yes!
+  });
+
+  promise
+    .then((data) => console.log(data));
 
 
   // Return a Promise that resolves to the string 'The PROMISE was RESOLVED' in 1 second
