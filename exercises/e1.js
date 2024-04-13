@@ -6,15 +6,12 @@
 export const createOneSecondPromise = () => {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(`'The PROMISE was RESOLVED'`);
-
+      resolve(`The PROMISE was RESOLVED`);
     }, 10);
-
   });
-
   promise
     .then((data) => console.log(data));
-
+  return promise
 
   // Return a Promise that resolves to the string 'The PROMISE was RESOLVED' in 1 second
   // make sure to use the promise constructor described in The Markdown For this exercise
@@ -23,6 +20,14 @@ export const createOneSecondPromise = () => {
 
 export const logMessageAfterOneSecond = (message) => {
 
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(message);
+    }, 10);
+  });
+  promise
+    .then((data) => console.log(data));
+  return promise
 
 
 
@@ -31,6 +36,17 @@ export const logMessageAfterOneSecond = (message) => {
 };
 
 export const logMessageAfterOneSecondAwait = async (message) => {
+
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(message);
+    }, 10);
+  });
+  promise
+    .then((data) => console.log(data));
+  return promise
+
+
   // use the 'createOneSecondPromise' function, and the await keyword
   // to create a function that logs a message after one second
   // in an async function it automatically returns a promise no matter what you return, so you don't need to
