@@ -43,14 +43,14 @@ export const getPromise = (bool) => {
 export const handlePromise = (promise) => {
 
   return new Promise((resolve, reject) => {
-    promise.then(
-      (resolvedValue) => {
-        resolve(resolvedValue);
-      },
-      () => {
-        resolve("Uh Oh");
-      }
-    );
+    promise
+      .then(
+        (resolve) => {
+          resolve(resolve);
+        }, () => {
+          resolve("Uh Oh");
+        }
+      );
   });
 };
 
