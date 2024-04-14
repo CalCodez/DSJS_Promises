@@ -16,7 +16,7 @@
  */
 export const getPromise = (num) => {
   const wholeNumber = new Promise((resolve, reject) => {
-    if (num >= 0 || num !== '') {
+    if (num >= 0 || !num === num.toString()) {
       resolve(num);
     } else {
       return 0;
@@ -42,8 +42,19 @@ export const getPromise = (num) => {
  */
 export const updateSumValue = () => {
   let sum = 2;
-  getPromise(120)
+  let sum2 = 120 + sum;
+  const solveGetPromise = new Promise((resolve, reject) => {
+    resolve(getPromise(sum2));
+  });
+  solveGetPromise
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+  {
+    return sum + 8;
+  }
+
 };
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-3"
