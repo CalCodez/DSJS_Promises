@@ -15,20 +15,12 @@
  * Example: export const getPromise(num) => return <Your code of promise>
  */
 export const getPromise = (num) => {
-  const wholeNumber = new Promise((resolve, reject) => {
-    if (num >= 0 || !num === num.toString()) {
-      resolve(num);
-    } else {
-      return 0;
-    }
-  })
-  wholeNumber
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
-
-  return wholeNumber;
-};
-
+  if (Number.isInteger(num) && !isNaN(num)) {
+    return Promise.resolve(num);
+  } else {
+    return 0;
+  }
+}
 /**
  * @task
  * Create a function that follows the steps:
