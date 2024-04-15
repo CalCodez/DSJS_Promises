@@ -33,18 +33,14 @@ export const getPromise = (num) => {
  * * if you have solved it successfully, the updateSumValue() function will return the value of 10;
  */
 export const updateSumValue = () => {
-  let sum = 2;
-  let sum2 = 120 + sum;
-  const solveGetPromise = new Promise((resolve, reject) => {
-    resolve(getPromise(sum2));
-  });
-  solveGetPromise
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
-  {
-    return sum + 8;
-  }
+  const sum = 2;
+  const solvedPromise = new Promise((resolve, reject) => {
+    resolve(getPromise(120));
+  })
 
+  solvedPromise
+    .then((data) => console.log(data));
+  return sum + 8;
 };
 
 
