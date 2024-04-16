@@ -53,18 +53,27 @@ export function onReject(error) {
  * Example: export const promiseHandler = () => return <your code>
  */
 
-export const handlePromise = () => {
-  const promiseHandler = (promise) => {
-
+export const handlePromise = (promise) => {
+  const promiseHandler = new Promise((resolve, reject) => {
     promise
-      .then((res) => res)
-      .catch((error) => console.log(error.message));
-  }
-
-
+      .then((value) => resolve(value))
+      .catch((reason) => {
+        if (reason && reason.message) {
+          console.log(reason.message);
+          resolve(undefined);
+        } else {
+          reject(reason);
+        }
+      });
+  });
 
   return promiseHandler;
+
 }
+
+
+
+
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-7"
 // If the test has all tests passed, switch to the next exercise file
