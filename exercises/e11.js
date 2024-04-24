@@ -13,6 +13,7 @@
  * * set the usersUrl constant to store the json-server 'users' endpoint path
 */
 
+
 export const usersUrl = 'http://localhost:3000/users/';
 
 /**
@@ -26,10 +27,9 @@ export const usersUrl = 'http://localhost:3000/users/';
  * Example: const getLoginList = (data) => {<Your code>}
 */
 
-const getLoginList = () => {
-  // Your code goes here...
-
-}
+const getLoginList = (data) => {
+  return data.map(user => user.login);
+};
 
 /**
  * @task
@@ -39,7 +39,16 @@ const getLoginList = () => {
 */
 
 // Your code goes here ...
-const getData;
+const getData = (usersUrl) => {
+  return fetch(usersUrl)
+    .then(response => {
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    });
+}
 
 /**
  * @task
@@ -53,7 +62,16 @@ const getData;
 */
 
 // Your code goes here ...
-export const result = getData;
+export const result = getData(usersUrl)
+  .then(data => {
+    const userLogin = getLoginList(data);
+    console.log(userLogin);
+    console.log(userLogin);
+    return Promise.resolve(userLogin);
+  })
+  .catch(error => {
+    console.error('An error occurred:', error);
+  });
 
 
 // === TEST YOURSELF ===
