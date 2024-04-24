@@ -60,6 +60,8 @@ export const fetchAllCharactersByIds = async (ids) => {
   // use the `fetchCharacterById` function above to make this work
   //*  write code to pass test ⬇ ️
 
-
+  return Promise.all(ids)
+    .then((ids) => fetchAllCharactersByIds(ids))
+    .catch((err) => err);
 
 };

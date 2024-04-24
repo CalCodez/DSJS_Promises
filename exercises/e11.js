@@ -66,7 +66,6 @@ export const result = getData(usersUrl)
   .then(data => {
     const userLogin = getLoginList(data);
     console.log(userLogin);
-    console.log(userLogin);
     return Promise.resolve(userLogin);
   })
   .catch(error => {
