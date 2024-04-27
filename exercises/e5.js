@@ -22,7 +22,6 @@ export const attachTitle = (arg) => {
 
 export const getPromise = () => {
   return Promise.resolve('MANHATTAN')
-
     .then(attachTitle)
     .then(console.log);
 

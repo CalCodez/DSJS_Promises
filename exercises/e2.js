@@ -41,17 +41,9 @@ export const getPromise = (bool) => {
  */
 
 export const handlePromise = (promise) => {
-
-  return new Promise((resolve, reject) => {
-    promise
-      .then(
-        (resolve) => {
-          resolve(resolve);
-        }, () => {
-          resolve("Uh Oh");
-        }
-      );
-  });
+  return Promise.resolve(promise)
+    .then((value) => value)
+    .catch(() => "Uh Oh");
 };
 
 // === TEST YOURSELF ===
