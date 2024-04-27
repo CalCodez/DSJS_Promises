@@ -20,9 +20,15 @@
  */
 
 export function parsePromised(json) {
-  return Promise.resolve(json);
+  return new Promise((resolve, reject) => {
+    try {
+      const parsedData = JSON.parse(json);
+      resolve(parsedData);
+    } catch (error) {
+      reject(error);
+    }
+  });
 }
-
 
 
 
@@ -39,6 +45,8 @@ export function parsePromised(json) {
 
 export function onReject(error) {
   console.log(error.message);
+  return undefined;
+
 }
 
 /**
@@ -54,22 +62,16 @@ export function onReject(error) {
  */
 
 export const handlePromise = (promise) => {
-  const promiseHandler = new Promise((resolve, reject) => {
-    promise
-      .then((value) => resolve(value))
-      .catch((reason) => {
-        if (reason && reason.message) {
-          console.log(reason.message);
-          resolve(undefined);
-        } else {
-          reject(reason);
-        }
-      });
-  });
-
-  return promiseHandler;
-
+  return promise
+    .then((value) => value)
+    .catch((reason) => {
+      onReject(reason);
+      // Explicitly return undefined in case of a rejected promise
+      return undefined;
+    });
 }
+
+
 
 
 
