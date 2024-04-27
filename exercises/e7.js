@@ -66,7 +66,6 @@ export const handlePromise = (promise) => {
     .then((value) => value)
     .catch((reason) => {
       onReject(reason);
-      // Explicitly return undefined in case of a rejected promise
       return undefined;
     });
 }
